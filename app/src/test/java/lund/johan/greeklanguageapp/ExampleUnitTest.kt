@@ -1,4 +1,4 @@
-package lund.johan.startercode
+package lund.johan.greeklanguageapp
 
 import org.junit.Test
 

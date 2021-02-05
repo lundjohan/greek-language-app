@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/startDestination"
-        android:name="lund.johan.startercode.StartFragment"
+        android:name="lund.johan.greeklanguageapp.ChaptersFragment"
         android:label="WelcomeFragment"
-        tools:layout="@layout/fragment_start">
+        tools:layout="@layout/fragment_chapters">
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package lund.johan.startercode
+package lund.johan.greeklanguageapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
