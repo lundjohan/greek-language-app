@@ -3,12 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/startDestination">
+    app:startDestination="@id/chapterItemsDestination">
 
     <fragment
-        android:id="@+id/startDestination"
-        android:name="lund.johan.greeklanguageapp.ChaptersFragment"
-        android:label="WelcomeFragment"
-        tools:layout="@layout/fragment_chapters">
+        android:id="@+id/chapterItemsDestination"
+        android:name="lund.johan.greeklanguageapp.chapterItems.ChapterItemsFragment"
+        android:label="ChapterItemsFragment"
+        tools:layout="@layout/fragment_chapter_items">
+        <action
+            android:id="@+id/action_chapters_to_chapter"
+            app:destination="@id/chapterDestination"
+            app:popUpTo="@id/chapterItemsDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/chapterDestination"
+        android:name="lund.johan.greeklanguageapp.chapter.ChapterFragment"
+        android:label="ChapterFragment"
+        tools:layout="@layout/fragment_chapter" >
+    <argument
+        android:name="id_chapter"
+        android:defaultValue="0"
+        app:argType="integer" />
     </fragment>
 </navigation>
