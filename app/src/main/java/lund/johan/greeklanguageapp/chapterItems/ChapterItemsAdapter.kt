@@ -18,8 +18,7 @@ import java.io.InputStream
 class ChapterItemsAdapter(
     private val usingFragment: Fragment,
     private val dataSet: Array<ChapterTeaser>
-) :
-        RecyclerView.Adapter<ChapterItemsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ChapterItemsAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val chapterImg: ImageView = view.findViewById(R.id.image)
@@ -52,14 +51,7 @@ class ChapterItemsAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val teaser: ChapterTeaser = dataSet[position]
         viewHolder.chapterInfo.text = teaser.txt
-
-        //load image
-        val assetManager: AssetManager = usingFragment.requireContext().assets
-        val istr: InputStream = assetManager.open("raw/"+position +".png")
-        val bitmap = BitmapFactory.decodeStream(istr)
-        istr.close()
-        //val imgUri = Uri.parse("android.resource://" + usingFragment.requireContext().packageName + "/R.raw." + teaser.imgId + ".png")
-        viewHolder.chapterImg.setImageBitmap(bitmap)//.setImageURI(imgUri)
+        viewHolder.chapterImg.setImageResource(teaser.imgId)
     }
 
     override fun getItemCount() = dataSet.size
