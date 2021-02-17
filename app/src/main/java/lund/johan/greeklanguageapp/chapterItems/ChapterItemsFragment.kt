@@ -29,7 +29,7 @@ class ChapterItemsFragment : Fragment() {
 
         //initiate RecyclerView
         //line below will be replaced by repository
-        val idsArr = Repository.getAllIds()
+        val idsArr = Repository.getAllChaptersIds()
 
         val linearLayoutManager = LinearLayoutManager(context)
         binding.chapterItems.layoutManager = linearLayoutManager

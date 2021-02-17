@@ -21,7 +21,7 @@
         android:label="ChapterFragment"
         tools:layout="@layout/fragment_chapter" >
     <argument
-        android:name="id_chapter"
+        android:name="idChapter"
         android:defaultValue="0"
         app:argType="integer" />
     </fragment>
