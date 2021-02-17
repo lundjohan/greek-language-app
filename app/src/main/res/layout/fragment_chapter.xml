@@ -8,7 +8,6 @@
     tools:context=".chapter.ChapterFragment">
 
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -23,25 +22,43 @@
             app:collapsedTitleGravity="center"
             app:contentScrim="@color/white"
             app:expandedTitleGravity="center"
+            app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/white">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/chapterTitel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:text="Titel of Chapter"
+                    android:textSize="32sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/chapterInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="More info here"
+                    android:textSize="12sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/topImage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
+                android:layout_gravity="top"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                android:id="@+id/chapterTitel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Titel of Chapter"
-                android:textSize="32sp"
 
-            </androidx.appcompat.widget.AppCompatTextView>
+
             <!--if you change height of Toolbar => change also padding bottom for recyclerview with the same-->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -49,28 +66,12 @@
                 android:layout_height="?attr/actionBarSize"
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
-                app:contentInsetStartWithNavigation="0dp"
-                />
+                app:contentInsetStartWithNavigation="0dp" />
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--<TextView
-        android:id="@+id/chapterTitel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Titel of Chapter"
-        android:textSize="32sp" />
-
-    <TextView
-        android:id="@+id/chapterInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="More text about chapter" />-->
-
-
-    <!--paddingBottom with appBar, otherwise it cuts out bottom of recyclerview content-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lessons"
         android:layout_width="match_parent"

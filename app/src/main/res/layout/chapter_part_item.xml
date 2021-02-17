@@ -18,6 +18,8 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <!--way of rounding this imageview corners is to either use rounded images,
+        or to put inside a cardview on its own-->
         <ImageView
             android:id="@+id/small_image"
             android:layout_width="wrap_content"
