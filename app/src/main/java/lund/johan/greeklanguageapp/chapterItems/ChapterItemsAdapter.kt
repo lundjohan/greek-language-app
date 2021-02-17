@@ -1,8 +1,5 @@
 package lund.johan.greeklanguageapp.chapterItems
 
-import android.content.res.AssetManager
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import lund.johan.greeklanguageapp.R
-import java.io.InputStream
+import lund.johan.greeklanguageapp.repository.Repository
 
 
 class ChapterItemsAdapter(
     private val usingFragment: Fragment,
-    private val dataSet: Array<ChapterTeaser>
+    private val ids: IntArray
 ) : RecyclerView.Adapter<ChapterItemsAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -49,11 +46,10 @@ class ChapterItemsAdapter(
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val teaser: ChapterTeaser = dataSet[position]
-        viewHolder.chapterInfo.text = teaser.txt
-        viewHolder.chapterImg.setImageResource(teaser.imgId)
+        viewHolder.chapterInfo.text = Repository.getImgTxt(ids[position])
+        Repository.loadImageInto(ids[position], viewHolder.chapterImg)
     }
 
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = ids.size
 
 }

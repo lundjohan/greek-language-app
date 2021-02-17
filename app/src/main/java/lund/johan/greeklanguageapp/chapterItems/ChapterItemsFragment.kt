@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import lund.johan.greeklanguageapp.MainActivity
-import lund.johan.greeklanguageapp.R
 import lund.johan.greeklanguageapp.databinding.FragmentChapterItemsBinding
+import lund.johan.greeklanguageapp.repository.Repository
 
 class ChapterItemsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +29,11 @@ class ChapterItemsFragment : Fragment() {
 
         //initiate RecyclerView
         //line below will be replaced by repository
-        val dataset: Array<ChapterTeaser> = arrayOf(
-            ChapterTeaser(R.drawable.acropolis_5_3, "The Acropolis"),
-            ChapterTeaser(R.drawable.greek_food_5_3, "Greek Food"),
-            ChapterTeaser(R.drawable.mycenae_5_3, "Mycenae")
-        )
+        val idsArr = Repository.getAllIds()
 
         val linearLayoutManager = LinearLayoutManager(context)
         binding.chapterItems.layoutManager = linearLayoutManager
-        val adapter: ChapterItemsAdapter = ChapterItemsAdapter(this, dataset)
+        val adapter: ChapterItemsAdapter = ChapterItemsAdapter(this, idsArr)
         binding.chapterItems.adapter = adapter
         return binding.root
     }
