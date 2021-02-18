@@ -1,7 +1,3 @@
-##Starter Code for Kotlin Android project##
+Greek Language App
 
-  Kotlin
-  .gitignore
-  Gradle: Android binding, Navigation
-  Navigation setup
-  safeargs
+Will Contain videos that is downloaded (possibly streamed) from web server
