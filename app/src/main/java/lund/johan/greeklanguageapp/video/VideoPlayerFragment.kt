@@ -12,6 +12,11 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.Util
 import lund.johan.greeklanguageapp.databinding.FragmentVideoPlayerBinding
 
+/**
+ * ExoPlayer code mainly copied from this codelab:
+ * https://developer.android.com/codelabs/exoplayer-intro#6
+ */
+
 class VideoPlayerFragment : Fragment() {
     lateinit var videoUrl: String
 
