@@ -29,7 +29,7 @@ class ChapterAdapter (
 
     //this has to change => now every item is going to same video.
     fun navigateToScreen(id: Int) {
-        val action = ChapterFragmentDirections.actionChapterToVideoplayer(usingFragment.getString(R.string.video_url));
+        val action = ChapterFragmentDirections.actionChapterToVideo(usingFragment.getString(R.string.video_url));
         NavHostFragment.findNavController(usingFragment).navigate(action);
     }
 

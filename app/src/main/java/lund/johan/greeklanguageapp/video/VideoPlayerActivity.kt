@@ -2,22 +2,28 @@ package lund.johan.greeklanguageapp.video
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.navArgs
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.util.Util
-import lund.johan.greeklanguageapp.databinding.FragmentVideoPlayerBinding
+import lund.johan.greeklanguageapp.R
+
+private val POSITION = "POS"
+
+private val WINDOW = "WINDOW"
 
 /**
  * ExoPlayer code mainly copied from this codelab:
  * https://developer.android.com/codelabs/exoplayer-intro#6
+ *
+ * N.B. !!! THINK TWICE BEFORE TRANFORMING THIS INTO A FRAGMENT =>
+ * NOTICE THAT IT KEEPS DATA DURING ORIENTATION WITH HELP OF MANIFEST VARIABLES.
  */
 
-class VideoPlayerFragment : Fragment() {
+class VideoPlayerActivity : AppCompatActivity() {
     lateinit var videoUrl: String
 
     lateinit var playerView: PlayerView
@@ -25,22 +31,16 @@ class VideoPlayerFragment : Fragment() {
     private var playWhenReady = true
     private var currentWindow = 0
     private var playbackPosition: Long = 0
+
+    val args: VideoPlayerActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //TODO: Change to binding
+        setContentView(R.layout.activity_video_player)
+        videoUrl = args.videoUrl
+        playerView = findViewById(R.id.video_view)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        videoUrl = VideoPlayerFragmentArgs.fromBundle(requireArguments()).videoUrl
-        val binding =
-            FragmentVideoPlayerBinding.inflate(inflater, container, false)
-        playerView = binding.videoView
-        return binding.root
-    }
     override fun onStart() {
         super.onStart()
         if (Util.SDK_INT > 23) {
@@ -71,7 +71,7 @@ class VideoPlayerFragment : Fragment() {
     }
 
     private fun initializePlayer() {
-        player = SimpleExoPlayer.Builder(requireContext()).build()
+        player = SimpleExoPlayer.Builder(this).build()
         playerView.player = player
         val mediaItem = MediaItem.fromUri(videoUrl)
         player!!.setMediaItem(mediaItem)
@@ -89,7 +89,6 @@ class VideoPlayerFragment : Fragment() {
             player = null
         }
     }
-
     @SuppressLint("InlinedApi")
     private fun hideSystemUi() {
         playerView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE

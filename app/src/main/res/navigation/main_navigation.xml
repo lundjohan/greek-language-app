@@ -25,17 +25,16 @@
         android:defaultValue="0"
         app:argType="integer" />
         <action
-            android:id="@+id/action_chapter_to_videoplayer"
-            app:destination="@id/videoPlayerFragment"
+            android:id="@+id/action_chapter_to_video"
+            app:destination="@id/videoPlayerActivity"
             app:popUpTo="@id/chapterDestination" />
     </fragment>
-    <fragment
-        android:id="@+id/videoPlayerFragment"
-        android:name="lund.johan.greeklanguageapp.video.VideoPlayerFragment"
-        android:label="fragment_video_player"
-        tools:layout="@layout/fragment_video_player" >
+    <activity
+        android:id="@+id/videoPlayerActivity"
+        android:name="lund.johan.greeklanguageapp.video.VideoPlayerActivity"
+        android:label="VideoPlayerActivity" >
         <argument
             android:name="videoUrl"
             app:argType="string" />
-    </fragment>
+    </activity>
 </navigation>
