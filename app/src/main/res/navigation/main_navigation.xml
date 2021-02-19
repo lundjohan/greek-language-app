@@ -24,5 +24,18 @@
         android:name="idChapter"
         android:defaultValue="0"
         app:argType="integer" />
+        <action
+            android:id="@+id/action_chapter_to_videoplayer"
+            app:destination="@id/videoPlayerFragment"
+            app:popUpTo="@id/chapterDestination" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="lund.johan.greeklanguageapp.video.VideoPlayerFragment"
+        android:label="fragment_video_player"
+        tools:layout="@layout/fragment_video_player" >
+        <argument
+            android:name="videoUrl"
+            app:argType="string" />
     </fragment>
 </navigation>
