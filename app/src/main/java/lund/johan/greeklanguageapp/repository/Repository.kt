@@ -3,12 +3,16 @@ package lund.johan.greeklanguageapp.repository
 import android.widget.ImageView
 import lund.johan.greeklanguageapp.R
 import lund.johan.greeklanguageapp.chapterItems.ChapterTeaser
-import lund.johan.greeklanguageapp.repository.Repository.chapterParts
+import javax.inject.Inject
 
-/*
-Temporary fake Repository, but will be calling remote and database in the future
+/**
+ * Repository is currently only using database, but will also be calling remote in the future
  */
-object Repository {
+class Repository @Inject constructor(){
+    /*val db = Room.databaseBuilder(
+        applicationContext,
+        AppDatabase::class.java, "greek_database"
+    ).build()*/
     val chapters: Array<ChapterTeaser> = arrayOf(
         ChapterTeaser(R.drawable.acropolis_5_3, "The Acropolis"),
         ChapterTeaser(R.drawable.greek_food_5_3, "Greek Food"),
@@ -32,7 +36,7 @@ object Repository {
     )
 
     val chapterParts:Array<ChapterTeaser> = arrayOf(
-        ChapterTeaser(R.drawable.greece_flag_small, "1. The Acropolis"),
+        ChapterTeaser(R.drawable.greece_flag_small, "1. Introduction"),
         ChapterTeaser(R.drawable.greece_flag_small, "2. The Acropolis"),
         ChapterTeaser(R.drawable.greece_flag_small, "3. The Acropolis"),
         ChapterTeaser(R.drawable.greece_flag_small, "1. Greek Food"),

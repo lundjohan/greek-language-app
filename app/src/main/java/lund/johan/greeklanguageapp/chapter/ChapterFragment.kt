@@ -8,19 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import lund.johan.greeklanguageapp.chapterItems.ChapterItemsAdapter
 import lund.johan.greeklanguageapp.databinding.FragmentChapterBinding
-import lund.johan.greeklanguageapp.repository.Repository
+import lund.johan.greeklanguageapp.repository.DaggerRepositoryFactory
 
-
+/**
+ * This Fragment contains a list of the Chapter's various material, such as films, wordgames etc
+ */
 class ChapterFragment : Fragment() {
     var idChapter:Int = -1
     lateinit var appBarLayout: AppBarLayout
     lateinit var collapsingToolbar: CollapsingToolbarLayout
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val repo = DaggerRepositoryFactory.create().repo()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +32,11 @@ class ChapterFragment : Fragment() {
         collapsingToolbar = binding.collapsingToolbar
 
         onlyShowTitleWhenAppBarIsCollapsed()
-        Repository.loadImageInto(idChapter,binding.topImage)
+        repo.loadImageInto(idChapter,binding.topImage)
 
         //initiate RecyclerView
         //line below will be replaced by repository
-        val idsArr = Repository.getAllChapterPartsIds(idChapter)
+        val idsArr = repo.getAllChapterPartsIds(idChapter)
 
         val linearLayoutManager = LinearLayoutManager(context)
         binding.lessons.layoutManager = linearLayoutManager
@@ -56,7 +54,7 @@ class ChapterFragment : Fragment() {
                 scrollRange = barLayout?.totalScrollRange!!
             }
             if (scrollRange + verticalOffset <= 0){
-                collapsingToolbar.title = Repository.getImgTxt(idChapter)
+                collapsingToolbar.title = repo.getImgTxt(idChapter)
                 isShow = true
             } else if (isShow){
                 collapsingToolbar.title = " " //careful there should a space between double quote otherwise it wont work

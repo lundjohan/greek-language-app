@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import lund.johan.greeklanguageapp.R
-import lund.johan.greeklanguageapp.repository.Repository
+import lund.johan.greeklanguageapp.repository.DaggerRepositoryFactory
 
-class ChapterAdapter (
-    private val usingFragment: Fragment,
-    private val smallIds: IntArray
-) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
+class ChapterAdapter(fragment: Fragment, smallIds: IntArray) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
+    private val repo = DaggerRepositoryFactory.create().repo()
+    private val usingFragment: Fragment = fragment;
+    private val smallIds: IntArray = smallIds;
+
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val chapterImg: ImageView = view.findViewById(R.id.small_image)
@@ -44,8 +45,8 @@ class ChapterAdapter (
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.chapterInfo.text = Repository.getSmallImgTxt((smallIds[position]))
-        Repository.loadSmallImageInto(smallIds[position], viewHolder.chapterImg)
+        viewHolder.chapterInfo.text = repo.getSmallImgTxt((smallIds[position]))
+        repo.loadSmallImageInto(smallIds[position], viewHolder.chapterImg)
     }
 
     override fun getItemCount() = smallIds.size
