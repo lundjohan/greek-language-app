@@ -17,5 +17,8 @@ interface ChapterDao: DaoInterface{
 
     @Query("SELECT chapter_id FROM chapter_table ORDER BY chapter_id ASC")
     suspend override fun getAllOfTableIds():IntArray
-//fun getAllChaptersIds(): LiveData<List<Long>>
+
+    @Query("SELECT * FROM chapter_table WHERE chapter_id = :key")
+    suspend fun getChapter(key: Int): Chapter
+
 }

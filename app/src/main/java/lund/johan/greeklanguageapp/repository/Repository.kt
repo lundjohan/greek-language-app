@@ -4,6 +4,7 @@ import android.widget.ImageView
 import kotlinx.coroutines.*
 import lund.johan.greeklanguageapp.database.GreekDatabase
 import lund.johan.greeklanguageapp.database.dao.DaoInterface
+import lund.johan.greeklanguageapp.database.entities.Chapter
 import javax.inject.Inject
 
 /**
@@ -120,5 +121,16 @@ class Repository {
             job.join()
         }
         return idsArr;
+    }
+
+    fun getChapter(idChapter: Int): Chapter {
+        lateinit var ch: Chapter
+        runBlocking {
+            val job: Job = launch(context = Dispatchers.Default) {
+                ch = db.chapterDao.getChapter(idChapter)
+            }
+            job.join()
+        }
+        return ch;
     }
 }

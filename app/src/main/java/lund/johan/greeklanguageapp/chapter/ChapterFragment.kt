@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import lund.johan.greeklanguageapp.database.entities.Chapter
 import lund.johan.greeklanguageapp.databinding.FragmentChapterBinding
 import lund.johan.greeklanguageapp.repository.DaggerRepositoryFactory
 
@@ -34,6 +35,10 @@ class ChapterFragment : Fragment() {
 
         onlyShowTitleWhenAppBarIsCollapsed()
         repo.loadImageInto(idChapter,binding.topImage)
+
+        val chapter:Chapter = repo.getChapter(idChapter)
+        binding.chapterTitel.text = chapter.title
+        binding.chapterInfo.text = chapter.info
 
         //initiate RecyclerView
         val idsArr = repo.getAllChapterPartsIds(idChapter)
