@@ -9,7 +9,7 @@ import lund.johan.greeklanguageapp.database.entities.Chapter
 @Dao
 interface ChapterDao: DaoInterface{
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(chapter: Chapter)
 
     @Query("SELECT * from chapter_table WHERE chapter_id = :key")

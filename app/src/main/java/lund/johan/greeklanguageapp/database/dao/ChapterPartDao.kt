@@ -9,7 +9,7 @@ import lund.johan.greeklanguageapp.database.entities.ChapterPart
 @Dao
 interface ChapterPartDao : DaoInterface{
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(chapterPart: ChapterPart)
 
     @Query("SELECT * from chapter_part_table WHERE chapter_part_id = :key")
@@ -20,4 +20,7 @@ interface ChapterPartDao : DaoInterface{
 
     @Query("SELECT chapter_part_id FROM chapter_part_table WHERE chapter_id IS :chapterId")
     suspend fun getChapterPartIdsWithChapterId(chapterId: Int): IntArray
+
+    @Query("SELECT * FROM chapter_part_table WHERE chapter_part_id IS :id")
+    suspend fun getChapterPart(id: Int): ChapterPart
 }

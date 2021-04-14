@@ -16,7 +16,7 @@ import javax.inject.Inject
  *
  * This is a Singleton class thanks to the companion object
  */
-@Database(entities = arrayOf(Chapter::class, ChapterPart::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(Chapter::class, ChapterPart::class), version = 2, exportSchema = false)
 abstract class GreekDatabase : RoomDatabase() {
     abstract val chapterDao: ChapterDao
     abstract val chapterPartDao: ChapterPartDao

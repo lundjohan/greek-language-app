@@ -5,6 +5,7 @@ import kotlinx.coroutines.*
 import lund.johan.greeklanguageapp.database.GreekDatabase
 import lund.johan.greeklanguageapp.database.dao.DaoInterface
 import lund.johan.greeklanguageapp.database.entities.Chapter
+import lund.johan.greeklanguageapp.database.entities.ChapterPart
 import javax.inject.Inject
 
 /**
@@ -132,5 +133,17 @@ class Repository {
             job.join()
         }
         return ch;
+    }
+
+    fun getChapterPart(id: Int): ChapterPart {
+        lateinit var ch: ChapterPart
+        runBlocking {
+            val job: Job = launch(context = Dispatchers.Default) {
+                ch = db.chapterPartDao.getChapterPart(id)
+            }
+            job.join()
+        }
+        return ch;
+
     }
 }

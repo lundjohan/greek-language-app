@@ -41,8 +41,8 @@ class DatabaseUtil {
             val chapterParts = listOf(
 
                 //Acropolis
-                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Introduction", null),
-                ChapterPart(1L, 0L, R.drawable.greece_flag_small, "2. The Acropolis", null),
+                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Buck Bunny","https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"),
+                ChapterPart(1L, 0L, R.drawable.greece_flag_small, "2. Antigonis Introduktion", null),
                 ChapterPart(2L, 0L, R.drawable.greece_flag_small, "3. The Acropolis", null),
 
                 //Greek Food

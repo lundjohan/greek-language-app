@@ -30,8 +30,14 @@ class ChapterAdapter(fragment: Fragment, smallIds: IntArray) : RecyclerView.Adap
 
     //this has to change => now every item is going to same video.
     fun navigateToScreen(id: Int) {
-        val action = ChapterFragmentDirections.actionChapterToVideo(usingFragment.getString(R.string.video_url));
-        NavHostFragment.findNavController(usingFragment).navigate(action);
+        //val action = ChapterFragmentDirections.actionChapterToVideo(usingFragment.getString(R.string.video_url));
+        val videoLink:String? = repo.getChapterPart(id).videoLink
+        if (!videoLink.isNullOrEmpty()) {
+            val action = ChapterFragmentDirections.actionChapterToVideo(
+                repo.getChapterPart(id).videoLink ?: ""
+            );
+            NavHostFragment.findNavController(usingFragment).navigate(action);
+        }
     }
 
     // Create new views (invoked by the layout manager)
