@@ -31,7 +31,6 @@ class ChapterItemsFragment : Fragment() {
             FragmentChapterItemsBinding.inflate(inflater, container, false)
 
         //initiate RecyclerView
-        //line below will be replaced by repository
         val idsArr = repo.getAllChaptersIds()
 
         val linearLayoutManager = LinearLayoutManager(context)

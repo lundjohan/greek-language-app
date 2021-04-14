@@ -1,9 +1,9 @@
 package lund.johan.greeklanguageapp.repository
 
 import dagger.Component
-import lund.johan.greeklanguageapp.database.GreekDatabase
+import lund.johan.greeklanguageapp.database.di.DatabaseModule
 
-@Component
+@Component(modules = [DatabaseModule::class, RepositoryModule::class])
 interface RepositoryFactory {
-    fun repo(): Repository;
+    fun repo():Repository
 }

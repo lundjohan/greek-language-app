@@ -25,6 +25,7 @@ class ChapterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         idChapter = ChapterFragmentArgs.fromBundle(requireArguments()).idChapter
+
         // Inflate the layout for this fragment
         val binding =
             FragmentChapterBinding.inflate(inflater, container, false)
@@ -35,7 +36,6 @@ class ChapterFragment : Fragment() {
         repo.loadImageInto(idChapter,binding.topImage)
 
         //initiate RecyclerView
-        //line below will be replaced by repository
         val idsArr = repo.getAllChapterPartsIds(idChapter)
 
         val linearLayoutManager = LinearLayoutManager(context)
