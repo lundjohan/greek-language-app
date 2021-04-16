@@ -13,6 +13,8 @@ class DatabaseUtil {
 
     companion object {
         var TAG = DatabaseUtil::class.simpleName.toString()
+        //In debug mode
+        val LOCALHOST_IPADDRESS = "192.168.0.105";
 
         //clearAllTables is non-blocking so this we use runBlocking
         fun clearDatabase(db: GreekDatabase) = runBlocking<Unit> {
@@ -26,7 +28,7 @@ class DatabaseUtil {
             val chapters = listOf(
                 Chapter(
                     0L, R.drawable.acropolis_5_3, "The Acropolis",
-                    "Antigoni stands at the Acropololis to explain its buildings and history"
+                    "Antigoni stands at the Acropolis to explain its buildings and history"
                 ),
                 Chapter(
                     1L, R.drawable.greek_food_5_3, "Greek Food",
@@ -41,9 +43,9 @@ class DatabaseUtil {
             val chapterParts = listOf(
 
                 //Acropolis
-                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Buck Bunny","https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"),
-                ChapterPart(1L, 0L, R.drawable.greece_flag_small, "2. Antigonis Introduktion", null),
-                ChapterPart(2L, 0L, R.drawable.greece_flag_small, "3. The Acropolis", null),
+                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Antigoni's Introduction", "http://"+ LOCALHOST_IPADDRESS+"/antigoni_videos/intro.mp4"),
+                ChapterPart(1L, 0L, R.drawable.greece_flag_small, "2. About The Homeros Epics","http://"+ LOCALHOST_IPADDRESS+"/antigoni_videos/about_homeros.mp4"),
+                ChapterPart(2L, 0L, R.drawable.greece_flag_small, "3. Buck Bunny","https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"),
 
                 //Greek Food
                 ChapterPart(3L, 1L, R.drawable.greece_flag_small, "1. Greek Food", null),
