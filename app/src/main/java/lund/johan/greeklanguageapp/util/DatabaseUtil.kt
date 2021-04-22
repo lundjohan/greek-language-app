@@ -14,6 +14,7 @@ class DatabaseUtil {
     companion object {
         var TAG = DatabaseUtil::class.simpleName.toString()
         //In debug mode
+        //to get to know ipadress of this computer => in terminal "localhost -I" => first IP-Address.
         val LOCALHOST_IPADDRESS = "192.168.0.105";
 
         //clearAllTables is non-blocking so this we use runBlocking
