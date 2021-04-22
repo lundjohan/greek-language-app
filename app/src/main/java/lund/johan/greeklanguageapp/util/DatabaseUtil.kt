@@ -44,7 +44,7 @@ class DatabaseUtil {
             val chapterParts = listOf(
 
                 //Acropolis
-                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Antigoni's Introduction", "http://"+ LOCALHOST_IPADDRESS+"/antigoni_videos/intro.mp4"),
+                ChapterPart(0L, 0L, R.drawable.greece_flag_small, "1. Antigoni's Introduction", "http://"+ LOCALHOST_IPADDRESS+"/antigoni_videos/intro_with_subs.mp4"),
                 ChapterPart(1L, 0L, R.drawable.greece_flag_small, "2. About The Homeros Epics","http://"+ LOCALHOST_IPADDRESS+"/antigoni_videos/about_homeros.mp4"),
                 ChapterPart(2L, 0L, R.drawable.greece_flag_small, "3. Buck Bunny","https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"),
 
